@@ -1,0 +1,5 @@
+# ros1_bridge mapping for the Otto 100 autonomy API
+autonomy_api:
+  topics: []
+  services_1_to_2: []
+  services_2_to_1: []

@@ -1,0 +1,29 @@
+analyzers:
+  boxer:
+    type: diagnostic_aggregator/AnalyzerGroup
+    path: Boxer Base
+    analyzers:
+      general:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: General
+        remove_prefix: 'boxer_node'
+        timeout: 5.0
+        expected: [
+          'boxer_node: General Logic',
+          'boxer_node: General Drivetrain',
+          'boxer_node: Battery',
+          'boxer_node: User voltage supplies',
+          'boxer_node: Current consumption',
+          'boxer_node: Left Motor',
+          'boxer_node: Right Motor',
+          'boxer_node: Lift Motor',
+          'boxer_node: Safety Loop',
+          'boxer_node: Hardware Status',
+          'boxer_node: Laser Scan topic status' ]
+      sensors:
+        type: diagnostic_aggregator/GenericAnalyzer
+        path: Sensor Topics
+        remove_prefix: 'boxer_node'
+        timeout: 5.0
+        expected: [
+          'boxer_node: /imu/data_raw topic status' ]

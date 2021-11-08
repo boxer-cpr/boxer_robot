@@ -1,0 +1,24 @@
+#!/bin/bash
+
+rosrun robot_upstart install --symlink --job ros --setup /etc/ros/setup.bash boxer_base/launch/base.launch
+
+# create the ros-bridge systemd job, which is a child of the above
+sudo bash -c "cat<<'EOF' > /lib/systemd/system/ros-bridge.service
+[Unit]
+Description=ROS1 to ROS2 bridge
+After=ros.service
+#PartOf=ros.service
+
+[Service]
+Type=simple
+Restart=no
+ExecStart=/usr/sbin/ros-bridge-start
+User=administrator
+Group=administrator
+
+[Install]
+WantedBy=multi-user.target
+EOF"
+
+sudo cp $(catkin_find boxer_base scripts/start-ros-bridge --first-only) /usr/sbin/ros-bridge-start
+sudo systemctl enable ros-bridge.service

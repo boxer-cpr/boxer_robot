@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<launch>
+
+  <!--
+    All of the Otto 100 API topics are inside the /cpr_[autonomy|fleet|platform]/[version]/[serial]
+    namespace, which is annoying to deal with.
+    For convenience, certain read-only topics are relayed into the root namespace for convenience.  Some topic names
+    don't map 1:1, but are expressive enough for clarity.
+  -->
+
+  <arg name="serial_no"   default="$(env BOXER_SERIAL_NO)" />
+  <arg name="api_version" default="$(optenv BOXER_API_VERSION v1_1)" />
+
+
+  <!-- BMS topics -->
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_fleet_bms_battery_status_relay"
+    args="/cpr_fleet_api/$(arg api_version)/$(arg serial_no)/bms/battery_status /bms/battery_status" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_bms_module0_state_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/bms/module0/state /bms/module0/state" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_bms_module1_state_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/bms/module1/state /bms/module1/state" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_bms_module0_temperature_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/bms/module0/temperature /bms/module0/temperature" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_bms_module1_temperature_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/bms/module1/temperature /bms/module1/temperature" />
+
+
+  <!-- Sensor topics -->
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_imu_module0_data_raw_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/imu/module0/data_raw /imu/module0/data_raw" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_imu_module0_magnetic_field_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/imu/module0/magnetic_field /imu/module0/magnetic_field" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_imu_module1_data_raw_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/imu/module1/data_raw /imu/module1/data_raw" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_laser_module0_scan_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/laser/module0/scan /front/scan" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_laser_module1_scan_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/laser/module1/scan /rear/scan" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_realsense_module0_depth_camera_info_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/realsense/module0/depth/camera_info /realsense/depth/camera_info" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_realsense_module0_depth_image_rect_raw_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/realsense/module0/depth/image_rect_raw /realsense/depth/image_rect_raw" />
+
+
+  <!-- Joint states and robot state -->
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_platform_joint_states_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/platform/joint_states /joint_states" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_platform_odom_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/platform/odom /odom" />
+
+
+  <!-- Safety & Emergency states -->
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_platform_emergency_stop_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/platform/emergency_stop /platform/emergency_stop" />
+
+  <node pkg="topic_tools" type="relay" name="$(arg serial_no)_platform_platform_safety_stop_relay"
+    args="/cpr_platform_api/$(arg api_version)/$(arg serial_no)/platform/safety_stop /platform/safety_stop" />
+</launch>

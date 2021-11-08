@@ -1,0 +1,6 @@
+#!/bin/bash
+source /etc/ros/setup.bash
+(trap 'kill 0' SIGINT;
+  $(catkin_find boxer_base scripts/start-platform-bridge --first-only) &
+  $(catkin_find boxer_base scripts/start-fleet-bridge --first-only) &
+  $(catkin_find boxer_base scripts/start-autonomy-bridge --first-only) )

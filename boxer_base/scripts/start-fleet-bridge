@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# load the ROS1 environment
+source /etc/ros/setup.bash
+
+# load the topic parameters into the rosparam server
+roslaunch --wait boxer_base load_fleet_params.launch
+
+# load the ROS2 environment
+source /opt/ros/foxy/setup.bash
+
+# load the Otto 100 ROS2 API
+source /opt/clearpath/ros2-api-1.1.8/setup.bash
+
+# set the ROS2 domain, other necessary envars for the Otto 100 base
+export ROS_DOMAIN_ID=100
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+export CYCLONEDDS_URI=file:///$(catkin_find boxer_base config/cyclone_dds.xml --first-only)
+
+# start the bridge for this domain
+ros2 run ros1_bridge parameter_bridge __name:=fleet_bridge __node:=fleet_bridge __ns:=fleet_api

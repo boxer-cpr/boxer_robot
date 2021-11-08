@@ -1,0 +1,56 @@
+<launch>
+  <!-- Create the robot description -->
+  <include file="$(find boxer_description)/launch/description.launch" />
+
+  <!-- Start the relays to rename the mapped ROS2 topics.  The ros1_bridge will publish the base topics for us -->
+  <include file="$(find boxer_base)/launch/bridge_relays.launch">
+    <arg name="serial_no"   value="$(env BOXER_SERIAL_NO)" />
+    <arg name="api_version" value="$(optenv BOXER_API_VERSION v1_1)" />
+  </include>
+
+  <!-- Teleoperation via joystick and rviz interactive markers -->
+  <include file="$(find boxer_control)/launch/teleop.launch" />
+  <include file="$(find boxer_control)/launch/status.launch" />
+
+  <!-- Monitor wireless connection status -->
+  <include file="$(find wireless_watcher)/launch/watcher.launch" />
+
+  <!-- Launch gpio node -->
+  <!--
+    TODO eventually enable this, but for now the required packages are not publicly available
+  <include file="$(find linux_gpio_driver)/launch/linux_gpio_driver.launch" if="$(optenv BOXER_GPIO 0)"/>
+  -->
+
+  <!-- Diagnostic Aggregator for robot monitor usage -->
+  <node pkg="diagnostic_aggregator" type="aggregator_node" name="diagnostic_aggregator">
+    <rosparam command="load" file="$(find boxer_base)/config/diagnostic_analyzers.yaml"/>
+  </node>
+
+  <!--
+    Filter raw gyro data into a usable IMU messages
+    The Boxer has 2 internal IMUs
+  -->
+  <node pkg="imu_filter_madgwick" type="imu_filter_node" name="imu0_filter">
+    <rosparam>
+      gain: 0.1
+      zeta: 0.001
+      publish_tf: false
+      use_magnetic_field_msg: true
+    </rosparam>
+    <remap from="imu/data_raw" to="imu/module0/data_raw" />
+    <remap from="imu/data"     to="imu/module0/data" />
+    <remap from="imu/mag"      to="imu/module0/magnetic_field" />
+  </node>
+  <node pkg="imu_filter_madgwick" type="imu_filter_node" name="imu1_filter">
+    <rosparam>
+      gain: 0.1
+      zeta: 0.001
+      publish_tf: false
+      use_mag: false
+    </rosparam>
+    <remap from="imu/data_raw" to="imu/module1/data_raw" />
+    <remap from="imu/data"     to="imu/module1/data" />
+  </node>
+
+  <include file="$(find boxer_control)/launch/control.launch"/>
+</launch>
