@@ -8,8 +8,7 @@
     <arg name="api_version" value="$(optenv BOXER_API_VERSION v1_1)" />
   </include>
 
-  <!-- Teleoperation via joystick and rviz interactive markers -->
-  <include file="$(find boxer_control)/launch/teleop.launch" />
+  <!-- Diagnostic aggregator -->
   <include file="$(find boxer_control)/launch/status.launch" />
 
   <!-- Monitor wireless connection status -->
