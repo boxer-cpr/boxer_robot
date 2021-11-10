@@ -107,10 +107,8 @@ and build it using the normal `catkin_make` command:
 source /opt/ros/noetic/setup.bash
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/src
-git clone http://gitlab.clearpathrobotics.com/Boxer/boxer.git
-git clone http://gitlab.clearpathrobotics.com/Boxer/boxer_robot.git
-git clone http://gitlab.clearpathrobotics.com/Boxer/cpr_common_msgs.git
-git clone http://gitlab.clearpathrobotics.com/Boxer/robot_state_aggregator.git
+git clone http://github.com/boxer-cpr/boxer.git
+git clone http://github.com/boxer-cpr/boxer_robot.git
 cd ..
 rosdep install --from-paths src --ignore-src -r -y --rosdistro=noetic
 catkin_make

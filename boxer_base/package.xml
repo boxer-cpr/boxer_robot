@@ -17,9 +17,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <depend>cpr_common_msgs</depend>
   <depend>controller_manager</depend>
-  <depend>cpr_common_srvs</depend>
   <depend>diagnostic_updater</depend>
   <depend>geometry_msgs</depend>
   <depend>boxer_msgs</depend>
