@@ -38,8 +38,19 @@ Base Platform Preparation
 ---------------------------
 
 You must enable the ROS2 API on the base platform before you can operate the robot.  To do this, ssh into the
-base platform (hostname matches the serial number).  Create the file `/var/tmp/rzr_configuration/env.sh` and
-put the following into it:
+base platform (hostname matches the serial number).
+
+If you are using the latest version of the Otto software, 2.22.3 at the time of writing, add the following to
+`/etc/ros/setup.bash`
+
+```bash
+export ROBOT_REQUIRE_NIMBUS=False
+export BRIDGE_INTF=att0
+export ENABLE_PLATFORM_ADAPTOR=True
+```
+
+Older versions of the Otto software, such as 1.18.x, require additional configuration:
+create the file `/var/tmp/rzr_configuration/env.sh` and put the following into it:
 
 ```bash
 export ROBOT_REQUIRE_NIMBUS=False
@@ -53,7 +64,7 @@ Then edit `/etc/ros/setup.bash` and add the following:
 source /var/tmp/rzr_configuration/env.sh
 ```
 
-Once you have made these changes, power-cycle the whole robot.
+Regardless of which API version you have installed, power-cycle the robot after making these changes.
 
 
 Backpack PC Preparation
@@ -65,14 +76,36 @@ Install ROS2 Foxy and the `ros1_bridge` package:
 sudo apt-get install ros-foxy-ros-base ros-foxy-ros1-bridge ros-foxy-rmw-cyclonedds-cpp
 ```
 
-Then install the ROS2 API packages provided by Otto:
+Then install the ROS2 API packages provided by Otto.  Depending on the version of the Otto software you may
+need a different version.  Otto 2.22.3 uses API 1.3:
+
+```bash
+wget http://prod-vm-jfrog-01.clearpath.ai//cpr-deps/pool/focal/clearpath-api_1.3.3-0_amd64.deb
+sudo dpkg -i clearpath-api_1.3.3-0_amd64.deb
+```
+
+Otto 2.18.x uses API 1.1:
 
 ```bash
 wget http://prod-vm-jfrog-01.clearpath.ai//cpr-deps/pool/focal/clearpath-api_1.1.8-0_amd64.deb
 sudo dpkg -i clearpath-api_1.1.8-0_amd64.deb
 ```
 
-Finally, if you haven't already done so (e.g. you did not use Clearpath's Universal ISO for ROS Noetic), install
+Add the appropriate API version to `/etc/ros/setup.bash`.  Select the appropriate line below to match the API
+version you installed above.
+
+```bash
+# Version 1.1
+export BOXER_API_VERSION=v1_1
+
+# Version 1.2
+export BOXER_API_VERSION=v1_2
+
+# Version 1.3
+export BOXER_API_VERSION=v1_3
+```
+
+If you haven't already done so (e.g. you did not use Clearpath's Universal ISO for ROS Noetic), install
 ROS Noetic on the backpack computer:
 
 ```bash
@@ -80,6 +113,64 @@ sudo apt-get install ros-noetic-robot
 ```
 
 Be sure to add the Clearpath apt sources according to http://packages.clearpathrobotics.com and configure rosdep.
+
+Additional dependencies that, at the time of writing, are not installable through rosdep:
+
+```bash
+# PS4 controller driver
+sudo apt-get install python-ds4drv
+
+# Wireless monitoring ROS node and its underlying system dependency
+git clone https://github.com/clearpathrobotics/wireless.git
+sudo apt-get install wireless-tools
+```
+
+Finally, you may need to configure the network bridge to omit `eno1` from the bridge and instead configure it as a
+static interface for communicating with the Otto 100 base platform.  Edit `/etc/netplan/50-clearpath-bridge.yaml` as
+follows (or whatever the name of your netplan configuration file happens to be)
+
+```yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    # static interface for communicating with the Otto 100 base
+    eno1:
+      dhcp4: no
+      dhcp6: no
+      addresses:
+        - 10.252.252.100/16
+
+    # bridge all other wired interfaces together on 192.168.131.x
+    bridge_eth:
+      dhcp4: no
+      dhcp6: no
+      match:
+        name: eth*
+    bridge_enp:
+      dhcp4: no
+      dhcp6: no
+      match:
+        name: enp*
+    bridge_enx:
+      dhcp4: no
+      dhcp6: no
+      match:
+        name: enx*
+  bridges:
+    br0:
+      dhcp4: yes
+      dhcp6: no
+      interfaces: [bridge_enp, bridge_enx, bridge_eth]
+      addresses:
+        - 192.168.131.1/24
+```
+
+Ensure that `boxer_base/config/cyclone_dds.xml` has the correct interface defined in it:
+
+```xml
+<NetworkInterfaceAddress>eno1</NetworkInterfaceAddress>
+```
 
 
 Web Interface
