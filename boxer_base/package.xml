@@ -42,6 +42,7 @@
   <exec_depend>interactive_marker_twist_server</exec_depend>
   <exec_depend>robot_state_aggregator</exec_depend>
   <exec_depend>twist_mux</exec_depend>
+  <exec_depend>imu_filter_madgwick</exec_depend>
 
   <test_depend>roslaunch</test_depend>
   <test_depend>roslint</test_depend>
