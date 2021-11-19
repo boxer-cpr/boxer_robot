@@ -2,71 +2,71 @@
 platform_api:
   topics:
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/bms/module0/state
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/bms/module0/state
       type: sensor_msgs/msg/BatteryState
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/bms/module1/state
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/bms/module1/state
       type: sensor_msgs/msg/BatteryState
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/bms/module0/temperature
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/bms/module0/temperature
       type: sensor_msgs/msg/Temperature
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/bms/module1/temperature
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/bms/module1/temperature
       type: sensor_msgs/msg/Temperature
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/diagnostics/diagnostics_aggregated
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/diagnostics/diagnostics_aggregated
       type: diagnostic_msgs/msg/DiagnosticArray
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/imu/module0/data_raw
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/imu/module0/data_raw
       type: sensor_msgs/msg/Imu
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/imu/module0/magnetic_field
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/imu/module0/magnetic_field
       type: sensor_msgs/msg/MagneticField
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/imu/module1/data_raw
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/imu/module1/data_raw
       type: sensor_msgs/msg/Imu
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/laser/module0/scan
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/laser/module0/scan
       type: sensor_msgs/msg/LaserScan
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/laser/module1/scan
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/laser/module1/scan
       type: sensor_msgs/msg/LaserScan
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/realsense/module0/depth/camera_info
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/realsense/module0/depth/camera_info
       type: sensor_msgs/msg/CameraInfo
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/realsense/module0/depth/image_rect_raw
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/realsense/module0/depth/image_rect_raw
       type: sensor_msgs/msg/Image
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/platform/joint_states
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/platform/joint_states
       type: sensor_msgs/msg/JointState
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/platform/odom
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/platform/odom
       type: nav_msgs/msg/Odometry
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/platform/safety_stop
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/platform/safety_stop
       type: std_msgs/msg/Bool
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/platform/emergency_stop
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/platform/emergency_stop
       type: std_msgs/msg/Bool
       queue_size: 1
     -
-      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/platform_control/cmd_vel
+      topic: /cpr_platform_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/platform_control/cmd_vel
       type: geometry_msgs/msg/Twist
       queue_size: 1
 

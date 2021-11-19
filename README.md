@@ -18,12 +18,12 @@ The ROS2 API operates on 3 domains:
 
 The `boxer_base` package contains the necessary launch files and scripts to translate the ROS2 topics into their
 appropriate ROS1 names.  By default the Otto 100 publishes all topics into a namespace matching the robot's physical
-serial number.  This serial number must be assigned to the `BOXER_SERIAL_NO` environment variable inside
+serial number.  This serial number must be assigned to the `ROS_ROBOT_SERIAL_NO` environment variable inside
 `/etc/ros/setup.bash`:
 
 ```bash
 # set the serial number of the Otto 100 base platform
-export BOXER_SERIAL_NO=A31_0123456789
+export ROS_ROBOT_SERIAL_NO=A31_0123456789
 ```
 
 The `boxer_bringup` package contains the `install` script which will create 2 systemd jobs: `ros` and `ros-bridge`.
@@ -156,7 +156,7 @@ $ rosnode list
 /twist_mux
 /wireless/wireless_watcher
 
-$ rostopic hz /cpr_fleet_api/v1_1/$BOXER_SERIAL_NO/bms/battery_status
+$ rostopic hz /cpr_fleet_api/v1_1/$ROS_ROBOT_SERIAL_NO/bms/battery_status
 # [...]
 average rate: 1.000
 	min: 1.000s max: 1.000s std dev: 0.00000s window: 1

@@ -4,7 +4,7 @@
 
   <!-- Start the relays to rename the mapped ROS2 topics.  The ros1_bridge will publish the base topics for us -->
   <include file="$(find boxer_base)/launch/bridge_relays.launch">
-    <arg name="serial_no"   value="$(env BOXER_SERIAL_NO)" />
+    <arg name="serial_no"   value="$(env ROS_ROBOT_SERIAL_NO)" />
     <arg name="api_version" value="$(optenv BOXER_API_VERSION v1_1)" />
   </include>
 

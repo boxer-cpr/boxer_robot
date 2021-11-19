@@ -8,7 +8,7 @@
     don't map 1:1, but are expressive enough for clarity.
   -->
 
-  <arg name="serial_no"   default="$(env BOXER_SERIAL_NO)" />
+  <arg name="serial_no"   default="$(env ROS_ROBOT_SERIAL_NO)" />
   <arg name="api_version" default="$(optenv BOXER_API_VERSION v1_1)" />
 
 

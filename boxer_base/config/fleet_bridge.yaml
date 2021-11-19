@@ -2,59 +2,59 @@
 fleet_api:
   topics:
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/configuration/state
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/configuration/state
       type: std_msgs/msg/String
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/diagnostics/diagnostics_aggregated
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/diagnostics/diagnostics_aggregated
       type: diagnostic_msgs/msg/DiagnosticArray
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/diagnostics/diagnostics_filtered
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/diagnostics/diagnostics_filtered
       type: diagnostic_msgs/msg/DiagnosticArray
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/map_data/robot_active_map
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/map_data/robot_active_map
       type: std_msgs/msg/String
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/mission/current_job_id
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/mission/current_job_id
       type: std_msgs/msg/String
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/navigation/farsight_reset_latched_cache
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/navigation/farsight_reset_latched_cache
       type: std_msgs/msg/Empty
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/bms/battery_status
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/bms/battery_status
       type: sensor_msgs/msg/BatteryState
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/configuration/state
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/configuration/state
       type: std_msgs/msg/String
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/diagnostics/diagnostics_aggregated
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/diagnostics/diagnostics_aggregated
       type: diagnostic_msgs/msg/DiagnosticArray
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/diagnostics/diagnostics_filtered
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/diagnostics/diagnostics_filtered
       type: diagnostic_msgs/msg/DiagnosticArray
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/map_data/robot_active_map
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/map_data/robot_active_map
       type: std_msgs/msg/String
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/mission/current_job_id
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/mission/current_job_id
       type: std_msgs/msg/String
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/navigation/farsight_reset_latched_cache
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/navigation/farsight_reset_latched_cache
       type: std_msgs/msg/Empty
       queue_size: 1
     -
-      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env BOXER_SERIAL_NO)/bms/battery_status
+      topic: /cpr_fleet_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/bms/battery_status
       type: sensor_msgs/msg/BatteryState
       queue_size: 1
 
