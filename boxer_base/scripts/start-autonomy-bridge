@@ -11,8 +11,14 @@ source /opt/ros/foxy/setup.bash
 
 # load the Otto 100 ROS2 API
 # Automatically use the latest version
-ROS2_VERSION=$(ls -r /opt/clearpath/ | grep ros2 | head -1)
-source /opt/clearpath/${ROS2_VERSION}/setup.bash
+if [ -d /opt/clearpath ];
+then
+  ROS2_VERSION=$(ls -r /opt/clearpath/ | grep ros2 | head -1)
+  if ! [ -z "$ROS2_VERSION" ];
+  then
+    source /opt/clearpath/${ROS2_VERSION}/setup.bash
+  fi
+fi
 
 # set the ROS2 domain, other necessary envars for the Otto 100 base
 export ROS_DOMAIN_ID=110
