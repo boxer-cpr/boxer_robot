@@ -10,7 +10,9 @@ roslaunch --wait boxer_base load_autonomy_params.launch
 source /opt/ros/foxy/setup.bash
 
 # load the Otto 100 ROS2 API
-source /opt/clearpath/ros2-api-1.1.8/setup.bash
+# Automatically use the latest version
+ROS2_VERSION=$(ls -r /opt/clearpath/ | grep ros2 | head -1)
+source /opt/clearpath/${ROS2_VERSION}/setup.bash
 
 # set the ROS2 domain, other necessary envars for the Otto 100 base
 export ROS_DOMAIN_ID=110
