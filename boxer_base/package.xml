@@ -35,12 +35,18 @@
 
   <exec_depend>boxer_control</exec_depend>
   <exec_depend>boxer_description</exec_depend>
+  <exec_depend>clearpath_api</exec_depend>
   <exec_depend>diagnostic_aggregator</exec_depend>
   <exec_depend>diff_drive_controller</exec_depend>
   <exec_depend>imu_filter_madgwick</exec_depend>
   <exec_depend>interactive_marker_twist_server</exec_depend>
   <exec_depend>twist_mux</exec_depend>
   <exec_depend>wireless_watcher</exec_depend>
+
+  <!-- ROS2 Dependencies -->
+  <exec_depend>foxy_ros1_bridge</exec_depend>
+  <exec_depend>foxy_ros_base</exec_depend>
+  <exec_depend>foxy_rmw_cyclonedds_cpp</exec_depend>
 
   <test_depend>roslaunch</test_depend>
   <test_depend>roslint</test_depend>
