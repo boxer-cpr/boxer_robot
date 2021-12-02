@@ -2,8 +2,8 @@
 Changelog for package boxer_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.3 (2021-12-02)
+------------------
 * Remove the roslint tests; we've removed the source code that would otherwise need linting
 * Contributors: Chris Iverach-Brereton
 
