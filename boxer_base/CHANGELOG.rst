@@ -2,6 +2,11 @@
 Changelog for package boxer_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Remove the roslint tests; we've removed the source code that would otherwise need linting
+* Contributors: Chris Iverach-Brereton
+
 0.1.2 (2021-12-02)
 ------------------
 * Remove the ROS2 Foxy exec_depends temporarily so we can get the core package built. Foxy dependencies will need to be installed manually for now
