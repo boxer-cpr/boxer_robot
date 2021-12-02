@@ -2,6 +2,11 @@
 Changelog for package boxer_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Make all of the scripts executable.  In the export from the previous repository their permissions got mangled
+* Contributors: Chris Iverach-Brereton
+
 0.1.0 (2021-11-08)
 ------------------
 

@@ -2,6 +2,21 @@
 Changelog for package boxer_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add the ROS2 and clearpath_api dependencies for the bridge
+* Sort the dependencies
+* Only try sourcing the ROS2 API if the directory exists
+* Dynamically load the correct ROS2 path when starting the bridges
+* Remove a duplicate diagnostic analyzer node
+* Remove an unsatisfiable dependency
+* Add the IMU filter dependency
+* Rename BOXER_SERIAL_NO to ROS_ROBOT_SERIAL_NO to match with incoming changes to the ISO
+* Update the build instructions to remove unneeded dependencies, update the actual dependencies
+* Teleop is now part of control.launch, so no need to start it separately
+* Make all of the scripts executable.  In the export from the previous repository their permissions got mangled
+* Contributors: Chris Iverach-Brereton
+
 0.1.0 (2021-11-08)
 ------------------
 
