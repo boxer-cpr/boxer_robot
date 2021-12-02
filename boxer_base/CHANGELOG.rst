@@ -2,6 +2,12 @@
 Changelog for package boxer_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.1.0 (2021-11-08)
+------------------
+
+* Initial commit of for Noetic
+* Contributors: Chris Iverach-Brereton
+
 0.0.10 (2020-08-24)
 -------------------
 * Updated camera framerates for hardware limitations
