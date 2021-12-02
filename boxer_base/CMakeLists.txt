@@ -19,9 +19,4 @@ if (CATKIN_ENABLE_TESTING)
   # @todo Enable this test when CORE-5634 gets done and solves the issue with the /run/... files
   #find_package(roslaunch)
   #roslaunch_add_file_check(launch/base.launch)
-
-  find_package(roslint)
-  roslint_cpp()
-  roslint_python()
-  roslint_add_test()
 endif()
