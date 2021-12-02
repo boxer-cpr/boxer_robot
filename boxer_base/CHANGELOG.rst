@@ -2,8 +2,8 @@
 Changelog for package boxer_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.1 (2021-12-02)
+------------------
 * Add the ROS2 and clearpath_api dependencies for the bridge
 * Sort the dependencies
 * Only try sourcing the ROS2 API if the directory exists
