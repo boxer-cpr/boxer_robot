@@ -44,9 +44,11 @@
   <exec_depend>wireless_watcher</exec_depend>
 
   <!-- ROS2 Dependencies -->
+  <!-- Temporarily disabled while we sort out build-farm issues
   <exec_depend>foxy_ros1_bridge</exec_depend>
   <exec_depend>foxy_ros_base</exec_depend>
   <exec_depend>foxy_rmw_cyclonedds_cpp</exec_depend>
+  -->
 
   <test_depend>roslaunch</test_depend>
   <test_depend>roslint</test_depend>
