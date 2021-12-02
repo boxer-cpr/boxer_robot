@@ -2,6 +2,9 @@
 Changelog for package boxer_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.1.1 (2021-12-02)
 ------------------
 * Make all of the scripts executable.  In the export from the previous repository their permissions got mangled

@@ -2,6 +2,11 @@
 Changelog for package boxer_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Remove the ROS2 Foxy exec_depends temporarily so we can get the core package built. Foxy dependencies will need to be installed manually for now
+* Contributors: Chris Iverach-Brereton
+
 0.1.1 (2021-12-02)
 ------------------
 * Add the ROS2 and clearpath_api dependencies for the bridge
