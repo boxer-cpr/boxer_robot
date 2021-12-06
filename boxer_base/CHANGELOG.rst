@@ -2,8 +2,8 @@
 Changelog for package boxer_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.4 (2021-12-06)
+------------------
 * Install the bridge scripts to the package's /share folder too; otherwise the install & start-bridge scripts won't work correctly
 * Contributors: Chris Iverach-Brereton
 
