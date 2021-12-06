@@ -2,6 +2,11 @@
 Changelog for package boxer_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Install the bridge scripts to the package's /share folder too; otherwise the install & start-bridge scripts won't work correctly
+* Contributors: Chris Iverach-Brereton
+
 0.1.3 (2021-12-02)
 ------------------
 * Remove the roslint tests; we've removed the source code that would otherwise need linting
