@@ -2,6 +2,11 @@
 Changelog for package boxer_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Explicitly run the bridge scripts through bash
+* Contributors: Chris Iverach-Brereton
+
 0.1.4 (2021-12-06)
 ------------------
 * Install the bridge scripts to the package's /share folder too; otherwise the install & start-bridge scripts won't work correctly
