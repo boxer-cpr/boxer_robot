@@ -2,6 +2,9 @@
 Changelog for package boxer_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.1.5 (2021-12-07)
 ------------------
 * Explicitly run the bridge scripts through bash
