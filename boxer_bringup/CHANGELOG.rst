@@ -2,8 +2,8 @@
 Changelog for package boxer_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.6 (2021-12-08)
+------------------
 * Make sure the ros-bridge-start script is marked as executable
 * Contributors: Chris Iverach-Brereton
 
