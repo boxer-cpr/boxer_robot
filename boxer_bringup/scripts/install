@@ -21,4 +21,5 @@ WantedBy=multi-user.target
 EOF"
 
 sudo cp $(catkin_find boxer_base scripts/start-ros-bridge --first-only) /usr/sbin/ros-bridge-start
+sudo chmod +x /usr/sbin/ros-bridge-start
 sudo systemctl enable ros-bridge.service
