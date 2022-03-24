@@ -1,5 +1,142 @@
-# ros1_bridge mapping for the Otto 100 autonomy API
 autonomy_api:
-  topics: []
+# ROS_DOMAIN_ID=110
+  topics:
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/appliance/pallet_pose
+      type: geometry_msgs/msg/Pose2D
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/audio_indication/volume
+      type: onboard_systems_msgs/msg/AudioVolume
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/bms/battery_status
+      type: sensor_msgs/msg/BatteryState
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/clouds/scan_points
+      type: geometry_extra_msgs/msg/PointVectorVector
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/configuration/properties
+      type: configuration_msgs/msg/RobotPropertyArray
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/configuration/system_id
+      type: configuration_msgs/msg/SystemId
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/control_selection/control_state
+      type: command_control_msgs/msg/ControlSelectionState
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/control_selection/current_mode
+      type: command_control_msgs/msg/NavigationMode
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/diagnostics/diagnostics_aggregated
+      type: diagnostic_msgs/msg/DiagnosticArray
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/diagnostics/diagnostics_filtered
+      type: diagnostic_msgs/msg/DiagnosticArray
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/graph/eraser_polygon
+      type: geometry_extra_msgs/msg/EraserPolygon
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/graph/eraser_progress
+      type: std_msgs/msg/Float32
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/graph/get_map_progress
+      type: std_msgs/msg/Float32
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/map_data/robot_active_map
+      type: std_msgs/msg/String
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/mission/current_job_id
+      type: std_msgs/msg/String
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/mission/current_step
+      type: command_control_msgs/msg/Step
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/navigation/active_autonomy_data
+      type: perception_navigation_msgs/msg/ActiveAutonomyData
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/navigation/current_footprint_mode
+      type: std_msgs/msg/String
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/navigation/farsight_uplink
+      type: perception_navigation_msgs/msg/FarsightList2
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/navigation/landmarks_2d
+      type: perception_navigation_msgs/msg/Landmarks2D
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/navigation/motion_state
+      type: perception_navigation_msgs/msg/MotionState
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/navigation/odom_intent
+      type: perception_navigation_msgs/msg/OdomIntent
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/navigation/path_2d
+      type: geometry_extra_msgs/msg/Pose2DArray
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/navigation/state
+      type: perception_navigation_msgs/msg/RobotState
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/onboard_systems/wireless_connection
+      type: onboard_systems_msgs/msg/WirelessConnection
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/robot_insight/footprints_atlas
+      type: perception_navigation_msgs/msg/FootprintArray
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/robot_state/state_sources
+      type: command_control_msgs/msg/SourcesList
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/safety/current_mode
+      type: std_msgs/msg/UInt8
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/slam/current_mode
+      type: perception_navigation_msgs/msg/SLAMMode
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/slam/graph_lines
+      type: geometry_extra_msgs/msg/PointVectorVector
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/slam/magnetic_lines
+      type: geometry_extra_msgs/msg/PointVectorVector
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/slam/scan_match_score
+      type: std_msgs/msg/Float64
+      queue_size: 1
+    -
+      topic: /cpr_autonomy_api/$(optenv BOXER_API_VERSION v1_1)/$(env ROS_ROBOT_SERIAL_NO)/slam/scan_points
+      type: geometry_extra_msgs/msg/PointVectorVector
+      queue_size: 1
+    -
+      topic: /$(env ROS_ROBOT_SERIAL_NO)/clearpath_api/info
+      type: clearpath_api/msg/ApiInfo
+      queue_size: 1
+
   services_1_to_2: []
   services_2_to_1: []

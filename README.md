@@ -47,6 +47,7 @@ If you are using the latest version of the Otto software, 2.22.3 at the time of 
 export ROBOT_REQUIRE_NIMBUS=False
 export BRIDGE_INTF=att0
 export ENABLE_PLATFORM_ADAPTOR=True
+export ENABLE_AUTONOMY_ADAPTOR=True
 ```
 
 Older versions of the Otto software, such as 1.18.x, require additional configuration:
@@ -56,6 +57,7 @@ create the file `/var/tmp/rzr_configuration/env.sh` and put the following into i
 export ROBOT_REQUIRE_NIMBUS=False
 export BRIDGE_INTF=att0
 export ENABLE_PLATFORM_ADAPTOR=True
+export ENABLE_AUTONOMY_ADAPTOR=True
 ```
 
 Then edit `/etc/ros/setup.bash` and add the following:
@@ -66,6 +68,10 @@ source /var/tmp/rzr_configuration/env.sh
 
 Regardless of which API version you have installed, power-cycle the robot after making these changes.
 
+If you want to permanently
+
+/opt/clearpath/X.YY/share/audio_indication/config/audio_indication.yaml
+master_volume: 0.0
 
 Backpack PC Preparation
 -------------------------
