@@ -21,7 +21,7 @@ then
 fi
 
 # set the ROS2 domain, other necessary envars for the Otto 100 base
-export ROS_DOMAIN_ID=110
+export ROS_DOMAIN_ID=95
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export CYCLONEDDS_URI=file:///$(catkin_find boxer_base config/cyclone_dds.xml --first-only)
 
