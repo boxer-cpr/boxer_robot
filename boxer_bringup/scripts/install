@@ -10,6 +10,7 @@ After=ros.service
 #PartOf=ros.service
 
 [Service]
+ExecStartPre=/bin/sh -c 'until ping -c1 10.252.252.1; do sleep 1; done;'
 Type=simple
 Restart=no
 ExecStart=/usr/sbin/ros-bridge-start
