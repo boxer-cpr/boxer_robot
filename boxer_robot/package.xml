@@ -18,6 +18,7 @@
 
   <exec_depend>boxer_base</exec_depend>
   <exec_depend>boxer_bringup</exec_depend>
-
+  <exec_depend>boxer_tests</exec_depend>
+  
   <export><metapackage /></export>
 </package>
