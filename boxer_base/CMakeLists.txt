@@ -13,6 +13,7 @@ install(PROGRAMS
   scripts/start-autonomy-bridge
   scripts/start-fleet-bridge
   scripts/start-platform-bridge
+  scripts/restart-adaptor
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 if (CATKIN_ENABLE_TESTING)

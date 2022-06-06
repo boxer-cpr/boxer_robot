@@ -24,3 +24,26 @@ EOF"
 sudo cp $(catkin_find boxer_base scripts/start-ros-bridge --first-only) /usr/sbin/ros-bridge-start
 sudo chmod +x /usr/sbin/ros-bridge-start
 sudo systemctl enable ros-bridge.service
+
+# create the adaptor-restart systemd job
+sudo bash -c "cat<<'EOF' > /lib/systemd/system/adaptor-restart.service
+[Unit]
+Description=Restarts Adaptor (ROS2 API) to pick up and bridge RealSense topics
+After=ros-bridge.service
+
+[Service]
+ExecStartPre=/bin/sh -c 'until ping -c1 10.252.252.1; do sleep 30; done;'
+Type=simple
+Restart=no
+ExecStart=/usr/sbin/adaptor-restart
+User=administrator
+Group=administrator
+
+[Install]
+WantedBy=multi-user.target
+
+EOF"
+
+sudo cp $(catkin_find boxer_base scripts/restart-adaptor --first-only) /usr/sbin/adaptor-restart
+sudo chmod +x /usr/sbin/adaptor-restart
+sudo systemctl enable adaptor-restart.service

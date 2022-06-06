@@ -1,27 +1,26 @@
-boxer_robot
-============
+# boxer_robot
 
-NOTE: This branch is for the new Boxer v2.4, which is supported on Noetic onward.  Older Boxers that ran Kinetic
+NOTE: This branch is for the new Boxer v2.4, which is supported on Noetic onward. Older Boxers that ran Kinetic
 and earlier will not work with this branch and are not considered to have reached end-of-life.
 
-Boxer 2.4 uses an unmodified Otto 100 base platform, running a customized version of ROS2.  For Noetic compatibility we
-use the `ros1_bridge` ROS2 package, running under Foxy.  This requires that ROS1 and ROS2 both be installed on the
+Boxer 2.4 uses an unmodified Otto 100 base platform, running a customized version of ROS2. For Noetic compatibility we
+use the `ros1_bridge` ROS2 package, running under Foxy. This requires that ROS1 and ROS2 both be installed on the
 Boxer's backpack PC.
 
 The ROS2 API operates on 3 domains:
 
-| Domain ID | API      | ROS1 Bridge Node   | Topic Namespace     |
-|-----------|----------|--------------------|---------------------|
-| 100       | Fleet    | `fleet_bridge`     | `/cpr_fleet_api`    |
-| 95        | Autonomy | `autonomy_bridge`  | `/cpr_autonomy_api` |
-| 90        | Platform | `platform_bridge`  | `/cpr_platform_api` |
+| Domain ID | API      | ROS1 Bridge Node  | Topic Namespace     |
+| --------- | -------- | ----------------- | ------------------- |
+| 100       | Fleet    | `fleet_bridge`    | `/cpr_fleet_api`    |
+| 95        | Autonomy | `autonomy_bridge` | `/cpr_autonomy_api` |
+| 90        | Platform | `platform_bridge` | `/cpr_platform_api` |
 
 NOTE: In Otto 2.22.3 the Autonomy API operated on domain 110 and the Platform API operated on domain 120. This was
 changed in the 2.22.4 release
 
 The `boxer_base` package contains the necessary launch files and scripts to translate the ROS2 topics into their
-appropriate ROS1 names.  By default the Otto 100 publishes all topics into a namespace matching the robot's physical
-serial number.  This serial number must be assigned to the `ROS_ROBOT_SERIAL_NO` environment variable inside
+appropriate ROS1 names. By default the Otto 100 publishes all topics into a namespace matching the robot's physical
+serial number. This serial number must be assigned to the `ROS_ROBOT_SERIAL_NO` environment variable inside
 `/etc/ros/setup.bash`:
 
 ```bash
@@ -36,11 +35,9 @@ The `ros` systemd job controls the `roscore` process and starts additional ROS1 
 The `ros-bridge` systemd job creates 3 `ros1_bridge` nodes, bridging the Otto 100's ROS2 platform, autonomy, and fleet
 APIs onto the ROS1 network.
 
+## Base Platform Preparation
 
-Base Platform Preparation
----------------------------
-
-You must enable the ROS2 API on the base platform before you can operate the robot.  To do this, ssh into the
+You must enable the ROS2 API on the base platform before you can operate the robot. To do this, ssh into the
 base platform (hostname matches the serial number).
 
 If you are using the latest version of the Otto software, 2.22.4 at the time of writing, add the following to
@@ -76,8 +73,7 @@ If you want to permanently
 /opt/clearpath/X.YY/share/audio_indication/config/audio_indication.yaml
 master_volume: 0.0
 
-Backpack PC Preparation
--------------------------
+## Backpack PC Preparation
 
 Install ROS2 Foxy and the `ros1_bridge` package:
 
@@ -85,8 +81,8 @@ Install ROS2 Foxy and the `ros1_bridge` package:
 sudo apt-get install ros-foxy-ros-base ros-foxy-ros1-bridge ros-foxy-rmw-cyclonedds-cpp
 ```
 
-Then install the ROS2 API packages provided by Otto.  Depending on the version of the Otto software you may
-need a different version.  Otto 2.22.x uses API 1.3:
+Then install the ROS2 API packages provided by Otto. Depending on the version of the Otto software you may
+need a different version. Otto 2.22.x uses API 1.3:
 
 ```bash
 wget http://prod-vm-jfrog-01.clearpath.ai//cpr-deps/pool/focal/clearpath-api_1.3.3-0_amd64.deb
@@ -100,7 +96,7 @@ wget http://prod-vm-jfrog-01.clearpath.ai//cpr-deps/pool/focal/clearpath-api_1.1
 sudo dpkg -i clearpath-api_1.1.8-0_amd64.deb
 ```
 
-Add the appropriate API version to `/etc/ros/setup.bash`.  Select the appropriate line below to match the API
+Add the appropriate API version to `/etc/ros/setup.bash`. Select the appropriate line below to match the API
 version you installed above.
 
 ```bash
@@ -135,7 +131,7 @@ sudo apt-get install wireless-tools
 ```
 
 Finally, you may need to configure the network bridge to omit `eno1` from the bridge and instead configure it as a
-static interface for communicating with the Otto 100 base platform.  Edit `/etc/netplan/50-clearpath-bridge.yaml` as
+static interface for communicating with the Otto 100 base platform. Edit `/etc/netplan/50-clearpath-bridge.yaml` as
 follows (or whatever the name of your netplan configuration file happens to be)
 
 ```yaml
@@ -181,24 +177,33 @@ Ensure that `boxer_base/config/cyclone_dds.xml` has the correct interface define
 <NetworkInterfaceAddress>eno1</NetworkInterfaceAddress>
 ```
 
+Generate an SSH key and copy to base platform computer. This will allow direct SSH access to the base platform computer from the backpack computer without needing to enter a password:
 
-Web Interface
----------------
+```bash
+ssh-keygen # Press enter through all the prompts
+ssh-copy-id -i ~/.ssh/id_rsa.pub 10.252.252.1 # Enter the base platform password once
+```
 
-Many of Boxer's features are available through the Otto web interface.  To access this, connect your computer to the
+Verify that the backpack computer can SSH access the base platform computer without needing to enter a password:
+
+```bash
+ssh 10.252.252.1
+```
+
+## Web Interface
+
+Many of Boxer's features are available through the Otto web interface. To access this, connect your computer to the
 same wireless network at the base robot (or connect directly to the robot's ethernet port) and navigate to
 `http://{boxer-ip-address}:5000`
 
 ![Vehicle Interface](docs/otto-app-vehicle.png "Vehicle Interface")
 
 This will allow you to adjust the volume of the robot's audio warnings and view the map the robot has made of its
-environment.  You can also take the robot out of neutral using this interface.
+environment. You can also take the robot out of neutral using this interface.
 
 ![Driving Interface](docs/otto-app-drive.png "Driving Interface")
 
-
-Building Instructions
-----------------------
+## Building Instructions
 
 After the base platform and backpack computers have been prepared, clone this package into a catkin workspace
 and build it using the normal `catkin_make` command:
@@ -281,5 +286,5 @@ angular:
   z: 0.0" -r 10
 ```
 
-This command will make the robot drive forward at 10cm/s.  Make sure the path is clear, and cancel the command to
+This command will make the robot drive forward at 10cm/s. Make sure the path is clear, and cancel the command to
 stop the robot, or use the e-stop.
