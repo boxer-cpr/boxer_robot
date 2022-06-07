@@ -32,7 +32,7 @@ Description=Restarts Adaptor (ROS2 API) to pick up and bridge RealSense topics
 After=ros-bridge.service
 
 [Service]
-ExecStartPre=/bin/sh -c 'until ping -c1 10.252.252.1; do sleep 30; done;'
+ExecStartPre=/bin/sh -c 'until ping -c1 10.252.252.1; do sleep 80; done;'
 Type=simple
 Restart=no
 ExecStart=/usr/sbin/adaptor-restart
