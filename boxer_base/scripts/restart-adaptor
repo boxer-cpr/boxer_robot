@@ -3,9 +3,9 @@
 # Do this to get the ROS_ROBOT_SERIAL_NO envar.
 source /etc/ros/setup.bash
 
-# Pass the ROS_ROBOT_SERIAL_NO envar to the base platform computer in the SERIAL_NO envar.
-# Restart the adaptor ROS node, using the SERIAL_NO envar in the ROS node name.
-ssh 10.252.252.1 env SERIAL_NO="$ROS_ROBOT_SERIAL_NO" 'bash -s' << 'EOF'
+# Pass the ROS_ROBOT_SERIAL_NO envar to the base platform computer,
+# and restart the adaptor ROS node.
+ssh 10.252.252.1 /bin/bash << EOF
    source /opt/clearpath/2.22/setup.bash
-   rosnode kill /${SERIAL_NO}_platform_api_robot_adaptor
+   rosnode kill /${ROS_ROBOT_SERIAL_NO}_platform_api_robot_adaptor
 EOF
