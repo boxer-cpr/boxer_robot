@@ -2,6 +2,12 @@
 Changelog for package boxer_base
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Update the platform and autonomy bridge domains
+* Enable the autonomy bridge, add the autonomy topics to the config file
+* Contributors: Chris Iverach-Brereton
+
 0.1.6 (2021-12-08)
 ------------------
 
