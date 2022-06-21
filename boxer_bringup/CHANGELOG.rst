@@ -2,8 +2,8 @@
 Changelog for package boxer_bringup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.7 (2022-06-21)
+------------------
 * Start ros-bridge service after the base platform computer comes up and is pingable; otherwise, the ros-bridge service dies upon booting the backpack computer.
 * Contributors: Joey Yang
 

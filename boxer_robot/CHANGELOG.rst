@@ -2,8 +2,8 @@
 Changelog for package boxer_robot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.1.7 (2022-06-21)
+------------------
 * WIP - Add dependency for boxer_tests
   This PR should only be merged once the test package is released.
 * Contributors: Joey Yang
