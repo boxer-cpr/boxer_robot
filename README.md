@@ -89,15 +89,8 @@ Then install the ROS2 API packages provided by Otto.  Depending on the version o
 need a different version.  Otto 2.22.x uses API 1.3:
 
 ```bash
-wget http://prod-vm-jfrog-01.clearpath.ai//cpr-deps/pool/focal/clearpath-api_1.3.3-0_amd64.deb
+wget https://packages.clearpathrobotics.com/stable/ubuntu/pool/main/c/clearpath-api/clearpath-api_1.3.3-0_amd64.deb
 sudo dpkg -i clearpath-api_1.3.3-0_amd64.deb
-```
-
-Otto 2.18.x uses API 1.1:
-
-```bash
-wget http://prod-vm-jfrog-01.clearpath.ai//cpr-deps/pool/focal/clearpath-api_1.1.8-0_amd64.deb
-sudo dpkg -i clearpath-api_1.1.8-0_amd64.deb
 ```
 
 Add the appropriate API version to `/etc/ros/setup.bash`.  Select the appropriate line below to match the API
