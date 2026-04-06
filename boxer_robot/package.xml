@@ -11,13 +11,10 @@
 
   <license>BSD</license>
 
-  <url type="website">https://wiki.clearpathrobotics.com/display/BOXER/CPE18+-+BOXER</url>
-
   <buildtool_depend>catkin</buildtool_depend>
 
   <exec_depend>boxer_base</exec_depend>
   <exec_depend>boxer_bringup</exec_depend>
-  <exec_depend>boxer_firmware</exec_depend>
 
   <export><metapackage /></export>
 </package>

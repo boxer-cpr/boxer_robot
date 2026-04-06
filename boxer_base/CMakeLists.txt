@@ -3,8 +3,8 @@ project(boxer_base)
 
 find_package(catkin REQUIRED COMPONENTS
   controller_manager diagnostic_updater geometry_msgs hardware_interface boxer_msgs
-  realtime_tools roscpp rospy rosserial_server sensor_msgs std_msgs std_srvs teleop_twist_joy
-  topic_tools rosgraph_msgs urdf image_transport cv_bridge urg_node)
+  realtime_tools roscpp rospy rosserial_server sensor_msgs std_msgs std_srvs
+  rosgraph_msgs urdf image_transport cv_bridge urg_node)
 
 find_package(Boost REQUIRED COMPONENTS thread chrono)
 find_package(OpenCV)
