@@ -1,0 +1,48 @@
+# Video mode:
+video_mode: "1280x960"
+
+# Image Format Control parameters
+image_format_color_coding: 'BayerGB8'
+image_format_roi_width: 1288
+image_format_roi_height: 964
+image_format_x_offset: 0
+image_format_y_offset: 0
+
+acquisition_frame_rate: &frame_rate 30.0
+acquisition_frame_rate_enable: true
+frame_rate_auto: "Continuous"
+
+# Exposure settings:
+exposure_mode: "Timed"
+exposure: 0.0
+exposure_time: &exposure_time 6550.82
+# settings if auto exposure was on 
+exposure_auto: "Continuous"
+auto_exposure_time_upper_limit: *exposure_time
+
+# Shutter settings:
+auto_shutter: false
+# doesn't seem to actually control anything
+shutter_speed: 0.033333333
+
+# Gain settings:
+gain_selector: "All"
+auto_gain: "Continuous"
+gain: 0.0
+
+# White balance settings:
+auto_white_balance: false
+white_balance_blue_ratio: 2
+white_balance_red_ratio: 2
+
+# Brightness:
+brightness: 1.5
+
+# Gamma:
+gamma: 1.0
+
+# Sharpness
+sharpness: 1024
+
+# Diagnostics configuration:
+desired_freq: *frame_rate

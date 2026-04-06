@@ -1,0 +1,17 @@
+#!/bin/bash
+
+rosrun camera_calibration cameracalibrator.py --size 8x6 \
+                                              --square 0.108 \
+                                              right:=/stereo/right/image_raw \
+                                              left:=/stereo/left/image_raw \
+                                              right_camera:=/stereo/right \
+                                              left_camera:=/stereo/left \
+                                              --approximate=0.1
+
+cd /tmp/
+mkdir calibration_params 
+tar -xzf calibrationdata.tar.gz -C ./calibration_params
+cd /tmp/calibration_params/
+sudo cp *.yaml /var/lib/pointgrey_camera/.
+
+#rosrun kalibr run_kalibr_tarfile.sh /tmp

@@ -1,0 +1,6 @@
+motor_temperature_warn: 75.0
+motor_temperature_error: 85.0
+bridge_temperature_warn: 85.0
+bridge_temperature_error: 95.0
+battery_temperature_warn: 45.0
+battery_temperature_error: 55.0

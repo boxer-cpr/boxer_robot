@@ -1,0 +1,11 @@
+publishers:
+  - mcu/lift_feedback
+  - mcu/status
+  - imu/data_raw
+  - bms/battery_status
+subscribers:
+  - cmd_led_state
+  - mcu/cmd_lift_position
+  - mcu/cmd_charging_set
+  - mcu/cmd_bmu_poweroff
+  - mcu/cmd_safety_mode

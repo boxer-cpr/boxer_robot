@@ -1,0 +1,6 @@
+publishers:
+  - mcu/left_feedback
+  - mcu/right_feedback
+  - mcu/traction/status
+subscribers:
+  - mcu/cmd_drive

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>boxer_robot</name>
+  <version>0.0.10</version>
+  <description>Metapackage of software to install on Boxer.</description>
+
+  <maintainer email="dniewinski@clearpathrobotics.com">Dave Niewinski</maintainer>
+  <author email="efernandez@clearpathrobotics.com">Enrique Fernandez</author>
+  <author email="mpurvis@clearpathrobotics.com">Mike Purvis</author>
+  <author email="modriscoll@clearpath.ai">Mike O'Driscoll</author>
+
+  <license>BSD</license>
+
+  <url type="website">https://wiki.clearpathrobotics.com/display/BOXER/CPE18+-+BOXER</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>boxer_base</exec_depend>
+  <exec_depend>boxer_bringup</exec_depend>
+  <exec_depend>boxer_firmware</exec_depend>
+
+  <export><metapackage /></export>
+</package>

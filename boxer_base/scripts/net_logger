@@ -1,0 +1,75 @@
+#!/usr/bin/env python
+# Software License Agreement (BSD)
+#
+# \file      net_logger
+# \authors   Justin Godson <jgodson@clearpathrobotics.com>
+# \copyright Copyright (c) 2016, Rockwell Automation Technologies, Inc., All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# * Redistributions of source code must retain the above copyright notice,
+#   this list of conditions and the following disclaimer.
+# * Redistributions in binary form must reproduce the above copyright notice,
+#   this list of conditions and the following disclaimer in the documentation
+#   and/or other materials provided with the distribution.
+# * Neither the name of Rockwell Automation Technologies nor the names of its contributors
+#   may be used to endorse or promote products derived from this software
+#   without specific prior written permission.
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+import rospy
+from boxer_base import NetLoggerNode
+from boxer_firmware import flash
+from cpr_common_srvs.srv import Bool
+
+# def flash(file_name, target_ip, mac_addr, boot_port, tftp_port, packet_size_cb=None, display_cb=None):
+LSPCU_DEFAULTS = {'file_name': 'mcu-lspcu.bin', 'target_ip': '10.253.253.2', 'mac_addr': '02:00:00:00:00:02'}
+TDCU_DEFAULTS = {'file_name': 'mcu-tdcu.bin', 'target_ip': '10.253.253.3', 'mac_addr': '02:00:00:00:00:03'}
+
+def flash_firmware(arg):
+  """Service server for flashing LSPCU and TDCU.
+  :param arg: Service msg
+  :type arg: cpr_common_srvs Bool
+  """
+
+  result = True
+
+  lspcu_args = rospy.get_param('~lspcu_firmware', LSPCU_DEFAULTS)
+  rospy.loginfo(lspcu_args)
+  tdcu_args = rospy.get_param('~tdcu_firmware', TDCU_DEFAULTS)
+  rospy.loginfo(tdcu_args)
+
+  try:
+    flash(**tdcu_args)
+  except Exception as e:
+    rospy.logerr('Failed to flash TDCU: %s' % e)
+    result = False
+
+  # Sleep and let the TDCU finish cleanup.
+  rospy.sleep(2)
+
+  try:
+    flash(**lspcu_args)
+  except Exception as e:
+    rospy.logerr('Failed to flash LSPCU: %s' % e)
+    result = False
+
+  return result
+
+
+if __name__ == '__main__':
+  # Create flash service for updating firmware for LSPCU and TDCU.
+  s = rospy.Service('flash_firmware', Bool, flash_firmware)
+
+  rospy.init_node('net_logger', anonymous=True)
+  logger_node = NetLoggerNode()
+  logger_node.run()

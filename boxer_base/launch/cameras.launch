@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="left_serial_path" default="/sys/devices/pci0000:00/0000:00:14.0/usb4/4-2/serial"/>
+  <arg name="right_serial_path" default="/sys/devices/pci0000:00/0000:00:14.0/usb4/4-1/serial"/>
+  <arg name="left_frame" default="stereo_left"/>
+  <arg name="right_frame" default="camera_right"/>
+
+  <!-- Common nodelet manager process -->
+  <node pkg="nodelet" type="nodelet" name="camera_nodelet_manager" args="manager" respawn="true"/>
+
+  <!-- Left camera namespace -->
+  <group ns="camera_left">
+    <node pkg="nodelet" type="nodelet" name="camera_nodelet"
+      args="load pointgrey_camera_driver/PointGreyCameraNodelet /camera_nodelet_manager" respawn="true">
+
+      <param name="frame_id" value="$(arg left_frame)" />
+      <rosparam file="$(find boxer_base)/config/cameras/camera.yaml" />
+      <rosparam file="$(find boxer_base)/config/cameras/left_trigger.yaml" />
+      <param name="camera_serial_path" value="$(arg left_serial_path)" />
+      <param name="camera_info_url" value="file://$(find boxer_base)/config/cameras/left.yaml" />
+    </node>
+
+    <include file="$(find image_proc)/launch/image_proc.launch">
+      <arg name="manager" value="/camera_nodelet_manager" />
+      <arg name="respawn" value="true" />
+    </include>
+  </group>
+
+  <!-- Right camera namespace -->
+  <group ns="camera_right">
+    <node pkg="nodelet" type="nodelet" name="camera_nodelet"
+      args="load pointgrey_camera_driver/PointGreyCameraNodelet /camera_nodelet_manager" respawn="true">
+
+      <param name="frame_id" value="$(arg right_frame)" />
+      <rosparam file="$(find boxer_base)/config/cameras/camera.yaml" />
+      <rosparam file="$(find boxer_base)/config/cameras/right_trigger.yaml" />
+      <param name="camera_serial_path" value="$(arg right_serial_path)" />
+      <param name="camera_info_url" value="file://$(find boxer_base)/config/cameras/right.yaml" />
+    </node>
+
+    <include file="$(find image_proc)/launch/image_proc.launch">
+      <arg name="manager" value="/camera_nodelet_manager"/>
+      <arg name="respawn" value="true" />
+    </include>
+  </group>
+</launch>

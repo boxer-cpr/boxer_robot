@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>boxer_base</name>
+  <version>0.0.10</version>
+  <description>Boxer's mobility and sensor base.</description>
+
+  <maintainer email="dniewinski@clearpathrobotics.com">Dave Niewinski</maintainer>
+  <author email="efernandez@clearpathrobotics.com">Enrique Fernandez</author>
+  <author email="mpurvis@clearpathrobotics.com">Mike Purvis</author>
+  <author email="modriscoll@clearpathrobotics.com">Mike O'Driscoll</author>
+
+  <license>BSD</license>
+
+  <url type="website">https://wiki.clearpathrobotics.com/display/BOXER/CPE18+-+BOXER</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>cpr_common_msgs</depend>
+  <depend>controller_manager</depend>
+  <depend>cpr_common_srvs</depend>
+  <depend>cv_bridge</depend>
+  <depend>diagnostic_updater</depend>
+  <depend>geometry_msgs</depend>
+  <depend>hardware_interface</depend>
+  <depend>image_transport</depend>
+  <depend>boxer_msgs</depend>
+  <depend>realtime_tools</depend>
+  <depend>robot_state_aggregator_client</depend>
+  <depend>roscpp</depend>
+  <depend>rosgraph_msgs</depend>
+  <depend>rospy</depend>
+  <depend>rosserial_server</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>teleop_twist_joy</depend>
+  <depend>tf</depend>
+  <depend>topic_tools</depend>
+  <depend>urdf</depend>
+  <depend>urg_node</depend>
+
+  <exec_depend>camera_calibration</exec_depend>
+  <exec_depend>compressed_image_transport</exec_depend>
+  <exec_depend>theora_image_transport</exec_depend>
+  <exec_depend>diagnostic_aggregator</exec_depend>
+  <exec_depend>diff_drive_controller</exec_depend>
+  <exec_depend>image_proc</exec_depend>
+  <exec_depend>image_view</exec_depend>
+  <exec_depend>imu_filter_madgwick</exec_depend>
+  <exec_depend>led_array_msgs</exec_depend>
+  <!-- Removed temporarily until point grey driver is fixed -->
+  <!-- exec_depend>pointgrey_camera_driver</exec_depend -->
+  <exec_depend>rosserial_python</exec_depend>
+  <exec_depend>boxer_control</exec_depend>
+  <exec_depend>boxer_description</exec_depend>
+  <exec_depend>wireless_watcher</exec_depend>
+  <exec_depend>linux_gpio_driver</exec_depend>
+  <exec_depend>interactive_marker_twist_server</exec_depend>
+  <exec_depend>robot_state_aggregator</exec_depend>
+  <exec_depend>twist_mux</exec_depend>
+
+  <test_depend>roslaunch</test_depend>
+  <test_depend>roslint</test_depend>
+</package>

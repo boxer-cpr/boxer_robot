@@ -1,0 +1,13 @@
+acquisition_frame_rate: &frame_rate 15.0
+
+# Trigger Settings
+enable_trigger: "Off"
+trigger_selector: "FrameStart"
+trigger_source: "Line0"
+
+line_selector: "Line3"
+line_mode: "Output"
+line_source: "ExposureActive"
+
+# Diagnostics configuration:
+desired_freq: *frame_rate

@@ -1,0 +1,56 @@
+<launch>
+  <include file="$(find boxer_description)/launch/description.launch" />
+
+  <node pkg="boxer_base" type="boxer_node" name="boxer_node">
+    <rosparam file="$(find boxer_base)/config/thermal_limits.yaml" />
+    <rosparam>
+      laser:
+        ip_address: '10.254.254.10'
+        frame_id: 'front_laser'
+    </rosparam>
+    <param name="current_firmware_version" command="rosversion boxer_firmware" />
+    <remap from="scan" to="front/scan" />
+  </node>
+
+  <node pkg="rosserial_server" type="udp_socket_node" name="lspcu_server">
+    <param name="client_port" value="11411" />
+    <param name="server_port" value="11411" />
+    <param name="client_addr" value="10.253.253.2" />
+    <rosparam command="load" param="require" file="$(find boxer_base)/config/lspcu_required.yaml" />
+  </node>
+  <node pkg="rosserial_server" type="udp_socket_node" name="tdcu_server">
+    <param name="client_port" value="11412" />
+    <param name="server_port" value="11412" />
+    <param name="client_addr" value="10.253.253.3" />
+    <rosparam command="load" param="require" file="$(find boxer_base)/config/tdcu_required.yaml" />
+  </node>
+  <node pkg="rosserial_python" type="message_info_service.py" name="rosserial_message_info" />
+
+  <!-- Teleoperation via joystick and rviz interactive markers -->
+  <include file="$(find boxer_control)/launch/teleop.launch" />
+  <include file="$(find boxer_control)/launch/status.launch" />
+
+  <include file="$(find boxer_base)/launch/cameras.launch"/>
+
+  <!-- Monitor wireless connection status -->
+  <include file="$(find wireless_watcher)/launch/watcher.launch" />
+
+  <!-- Launch gpio node -->
+  <include file="$(find linux_gpio_driver)/launch/linux_gpio_driver.launch" if="$(optenv BOXER_GPIO 0)"/>
+
+  <!-- Diagnostic Aggregator for robot monitor usage -->
+  <node pkg="diagnostic_aggregator" type="aggregator_node" name="diagnostic_aggregator">
+    <rosparam command="load" file="$(find boxer_base)/config/diagnostic_analyzers.yaml"/>
+  </node>
+
+  <!-- Filter raw gyro data into a usable IMU message -->
+  <node pkg="imu_filter_madgwick" type="imu_filter_node" name="imu_filter">
+    <rosparam>
+      gain: 0.1
+      zeta: 0.001
+      publish_tf: false
+    </rosparam>
+  </node>
+
+  <include file="$(find boxer_control)/launch/control.launch"/>
+</launch>

@@ -1,0 +1,14 @@
+acquisition_frame_rate: &frame_rate 15.0
+
+# Strobe and trigger Settings
+enable_trigger: "On"
+trigger_selector: "FrameStart"
+trigger_source: "Line3"
+trigger_activation_mode: "FallingEdge"
+
+# Trigger controls exposure length
+exposure_mode: "TriggerWidth"
+exposure_auto: "Off"
+
+# Diagnostics configuration:
+desired_freq: *frame_rate
