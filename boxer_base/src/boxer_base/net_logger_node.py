@@ -56,7 +56,7 @@ LOG_LEVEL_MAP = {
 class LineParser(object):
     def __init__(self):
         # Create regex compiled search
-        self.search_regex = re.compile('^\[(.+)\] (.+):(\d+) (.+)$')
+        self.search_regex = re.compile(r'^\[(.+)\] (.+):(\d+) (.+)$')
 
     def process_log_line(self, line, node_name):
         """Process a log line and format it into a rosgraph message.
