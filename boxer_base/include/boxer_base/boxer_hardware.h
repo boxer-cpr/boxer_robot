@@ -43,8 +43,7 @@ POSSIBILITY OF SUCH DAMAGE.
 
 #include "std_msgs/Bool.h"
 #include "std_srvs/Empty.h"
-
-#include "cpr_common_srvs/Bool.h"
+#include "std_srvs/SetBool.h"
 #include "boxer_msgs/Drive.h"
 #include "boxer_msgs/LiftPosition.h"
 #include "boxer_msgs/MotorFeedback.h"
@@ -73,8 +72,8 @@ private:
   bool homeServiceCallback(std_srvs::Empty::Request &req, std_srvs::Empty::Response &res);
   bool raiseServiceCallback(std_srvs::Empty::Request &req, std_srvs::Empty::Response &res);
 
-  bool setCharging(cpr_common_srvs::Bool::Request &req, cpr_common_srvs::Bool::Response &res);
-  bool setEStopCallback(cpr_common_srvs::Bool::Request &req, cpr_common_srvs::Bool::Response &res);
+  bool setCharging(std_srvs::SetBool::Request &req, std_srvs::SetBool::Response &res);
+  bool setEStopCallback(std_srvs::SetBool::Request &req, std_srvs::SetBool::Response &res);
 
   void setPlatformPubCallback(const ros::TimerEvent& event);
   bool poweroffServiceCallback(std_srvs::Empty::Request& req, std_srvs::Empty::Response& res);

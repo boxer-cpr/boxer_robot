@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 2.8.3)
 project(boxer_base)
 
 find_package(catkin REQUIRED COMPONENTS
-  cpr_common_msgs controller_manager cpr_common_srvs diagnostic_updater geometry_msgs hardware_interface boxer_msgs
-  realtime_tools roscpp rospy rosserial_server sensor_msgs std_msgs teleop_twist_joy
+  controller_manager diagnostic_updater geometry_msgs hardware_interface boxer_msgs
+  realtime_tools roscpp rospy rosserial_server sensor_msgs std_msgs std_srvs teleop_twist_joy
   topic_tools rosgraph_msgs urdf image_transport cv_bridge urg_node)
 
 find_package(Boost REQUIRED COMPONENTS thread chrono)

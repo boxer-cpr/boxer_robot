@@ -105,7 +105,7 @@ BoxerHardware::BoxerHardware() :
   home_requested_ = boxer_msgs::LiftPosition::HOME_NONE;
 
   // Service client for footprint check for auto-homing the lift
-  footprint_check_service_ = nh_.serviceClient<cpr_common_srvs::Bool>("platform_footprint_check");
+  footprint_check_service_ = nh_.serviceClient<std_srvs::SetBool>("platform_footprint_check");
 
   // Provide functionality to e-stop the platform from the PC
   // Setup a latching publisher and set it to false initially
@@ -187,7 +187,7 @@ void BoxerHardware::autoHomeTimerCallback(const ros::TimerEvent& event)
       return;
     }
 
-    cpr_common_srvs::Bool srv;
+    std_srvs::SetBool srv;
     srv.request.data = true;
     // Check the call succeeded.
     if (!footprint_check_service_.call(srv))
@@ -198,7 +198,7 @@ void BoxerHardware::autoHomeTimerCallback(const ros::TimerEvent& event)
     }
 
     // Check our response code.
-    if (srv.response.data)
+    if (srv.response.success)
     {
       // Set homing down for next spin of the joint code.
       home_requested_ = boxer_msgs::LiftPosition::HOME_DOWN;
@@ -493,24 +493,24 @@ bool BoxerHardware::poweroffServiceCallback(std_srvs::Empty::Request& req, std_s
   return true;
 }
 
-bool BoxerHardware::setCharging(cpr_common_srvs::Bool::Request &req, cpr_common_srvs::Bool::Response &res)
+bool BoxerHardware::setCharging(std_srvs::SetBool::Request &req, std_srvs::SetBool::Response &res)
 {
   // Set the requested autocharge state and publish
   // it to the LSPCU immediately and on the 1hz timer.
   enable_autocharge_.data = req.data;
   mcu_charge_enable_pub_.publish(enable_autocharge_);
 
-  res.data = true;
+  res.success = true;
   return true;
 }
 
-bool BoxerHardware::setEStopCallback(cpr_common_srvs::Bool::Request &req, cpr_common_srvs::Bool::Response &res)
+bool BoxerHardware::setEStopCallback(std_srvs::SetBool::Request &req, std_srvs::SetBool::Response &res)
 {
   // Set the requested estop state and publish it to the LSPCU
   set_estop_.data = req.data;
   mcu_estop_pub_.publish(set_estop_);
 
-  res.data = true;
+  res.success = true;
   return true;
 }
 
